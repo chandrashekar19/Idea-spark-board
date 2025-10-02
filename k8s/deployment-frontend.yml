@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idea-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: idea-frontend
+  template:
+    metadata:
+      labels:
+        app: idea-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: your-dockerhub-username/idea-frontend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: VITE_API_URL
+              value: "http://idea-backend-service:4000"  # points frontend to backend service inside cluster

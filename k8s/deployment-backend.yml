@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: idea-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: idea-backend
+  template:
+    metadata:
+      labels:
+        app: idea-backend
+    spec:
+      containers:
+        - name: backend
+          image: your-dockerhub-username/idea-backend:latest
+          env:
+            - name: SUPABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-secrets
+                  key: url
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-secrets
+                  key: service-role-key
+          ports:
+            - containerPort: 4000
