@@ -2,18 +2,20 @@ version: "3.8"
 
 services:
   frontend:
-    build: .
-    container_name: frontend
+    build: ./frontend
+    container_name: idea-frontend
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://backend:4000
+      - VITE_SUPABASE_URL=${SUPABASE_URL}
+      - VITE_SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}
+      # - VITE_API_URL=http://backend:4000   # uncomment if frontend uses backend
     depends_on:
       - backend
 
   backend:
     build: ./backend
-    container_name: backend
+    container_name: idea-backend
     ports:
       - "4000:4000"
     environment:
