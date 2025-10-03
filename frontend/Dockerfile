@@ -14,5 +14,5 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 4000
-CMD ["node", "dist/index.js"]
+EXPOSE 3000
+CMD ["npm", "run", "preview"]
