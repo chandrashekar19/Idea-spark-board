@@ -8,9 +8,8 @@ A two-part application:
 
 ## 🚀 Overview & Architecture
 
-- **Frontend**: Next.js (Vite) + TailwindCSS  
-  - Landing page (`/`)  
-  - Idea Board (`/app`)  
+- **Frontend**: React.js (Vite) + TailwindCSS  
+
   - By default, communicates directly with **Supabase** using the anon key.  
 
 - **Backend**: Node.js + Express (TypeScript)  
